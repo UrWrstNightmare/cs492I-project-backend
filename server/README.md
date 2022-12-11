@@ -16,3 +16,7 @@
 ## Conventions 
 ### Commit Messages
 - `:gitmoji: (Scope): Message In Title Case`
+
+
+### How to run
+`poetry run gunicorn --workers=2 --bind=0.0.0.0:15001 --daemon -k uvicorn.workers.UvicornWorker server.main:app`

@@ -6,10 +6,26 @@ authors = ["Jiho Park <jihopark7777@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 fastapi = {extras = ["all"], version = "^0.87.0"}
 uvicorn = "^0.20.0"
 python-dotenv = "^0.21.0"
+torch = { url = "https://download.pytorch.org/whl/cu115/torch-1.11.0%2Bcu115-cp310-cp310-linux_x86_64.whl"}
+torchvision = { url = "https://download.pytorch.org/whl/cu115/torchvision-0.12.0%2Bcu115-cp310-cp310-linux_x86_64.whl"}
+#torch = { version = "=1.10.0+cu113", source = "pytorch" }
+#torchvision = { version = "=0.11.1+cu113", source = "pytorch" }
+
+#[[tool.poetry.source]]
+#name = "pytorch"
+#url = "https://download.pytorch.org/whl/cu113/"
+#secondary = true
+transformers = "^4.25.1"
+numpy = "^1.23.5"
+pydantic = "^1.10.2"
+requests = "^2.28.1"
+pillow = "^9.3.0"
+gunicorn = "^20.1.0"
+
 
 [tool.poetry.scripts]
 start = "server.__init__:start_uvicorn"
