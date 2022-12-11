@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+        rabbitmq:
+                image: rabbitmq:3-management
+                restart: always
+                env_file: 
+                        - .env
+                environment:
+                        RABBITMQ_DEFAULT_USER: $RABBITMQ_DEFAULT_USER
+                        RABBITMQ_DEFAULT_PASS: $RABBITMQ_DEFAULT_PASS
+                ports:
+                        - $RABBITMQ_RPC_PORT:5672
+                        - $RABBITMQ_MANAGEMENT_PORT:8080
+                container_name: cs492_rabbitmq
+
+        mongodb:
+                image: mongo
+                restart: always
+                env_file:
+                        - .env
+                environment:
+                        MONGO_INITDB_ROOT_USERNAME: $MONGO_ROOT_USER
+                        MONGO_INITDB_ROOT_PASSWORD: $MONGO_ROOT_PASS
+                        MONGO_INITDB_DATABASE: cs492
+                ports:
+                        - $MONGODB_PORT:27017
+                volumes:
+                        - cs492_mongo_db:/data/db
+                container_name: cs492_mongodb
+
+
+volumes:
+        cs492_mongo_db:
+                external: true
